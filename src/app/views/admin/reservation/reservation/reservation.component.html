@@ -5,9 +5,8 @@
         <div class="card mb-4">
           <div class="card-header pb-0">
             <div class="row">
-              <h1 class="col-10">Liste des Réservation</h1>
-              <a routerLink="Ajouter" class="col-1 btn btn-success">Ajouter </a>
-              <a routerLink="Filtrer" class="col-1 btn btn-info">Filtrer </a>
+              <h1 class="col-9">Liste des Réservation</h1>
+              <a routerLink="Filtrer" class="col-2 btn btn-info">Filtrer </a>
             </div>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
@@ -25,36 +24,34 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>12333</td>
-                    <td>Esprit</td>
+                  <tr *ngFor="let r of reservations; let i = index">
+                    <td>{{ r.idReservation }}</td>
+                    <td>{{ r.anneeUniversitaire }}</td>
                     <td>
-                      <span class="badge badge-sm bg-gradient-success">
-                        oui
-                      </span>
-                    </td>
-                    <td class="col">
-                      <a class="btn text-danger">
-                        <span class="material-icons"> close </span></a
-                      ><a class="btn text-success">
-                        <span class="material-icons"> done </span></a
-                      ><a class="btn text-danger">
-                        <span class="material-icons"> archive </span></a
+                      <span
+                        class="badge badge-sm bg-gradient-success"
+                        *ngIf="r.estValide == true"
                       >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>12333</td>
-                    <td>Esprit</td>
-                    <td>
-                      <span class="badge badge-sm bg-gradient-danger">
-                        nonn
+                        {{ r.estValide }}
+                      </span>
+                      <span
+                        class="badge badge-sm bg-gradient-danger"
+                        *ngIf="r.estValide == false"
+                      >
+                        {{ r.estValide }}
                       </span>
                     </td>
+
                     <td class="col">
-                      <a class="btn text-danger">
+                      <a
+                        class="btn text-danger"
+                        (click)="nonValide(r.idReservation)"
+                      >
                         <span class="material-icons"> close </span></a
-                      ><a class="btn text-success">
+                      ><a
+                        class="btn text-success"
+                        (click)="ouiValide(r.idReservation)"
+                      >
                         <span class="material-icons"> done </span></a
                       ><a class="btn text-danger">
                         <span class="material-icons"> archive </span></a
