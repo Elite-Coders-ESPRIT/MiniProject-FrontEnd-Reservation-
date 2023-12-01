@@ -28,58 +28,57 @@
           <div class="card-header text-center pt-4">
             <h1>Reserver une chambre</h1>
           </div>
+          <!-- Ajoutez cette section après votre formulaire -->
+          <div
+            *ngIf="message"
+            class="alert alert-warning mt-3 mx-2"
+            role="alert"
+          >
+            {{ message }}
+          </div>
           <div class="card-body">
-            <form role="form"  >
+            <form
+              role="form"
+              (submit)="ajouterReservation()"
+              #reservationForm="ngForm"
+            >
               <div class="row">
                 <div class="col-6 mb-3">
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Name"
-                    aria-label="Name"
+                    placeholder="typeChambre"
+                    aria-label="Type Chambre"
+                    id="typeChambre"
+                    name="typeChambre"
+                    [(ngModel)]="reservation.typeChambre"
+                    required
                   />
                 </div>
                 <div class="col-6 mb-3">
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Email"
-                    aria-label="Email"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6 mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Password"
-                    aria-label="Password"
-                  />
-                </div>
-                <div class="col-6 mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Password"
-                    aria-label="Password"
+                    placeholder="Votre Cin "
+                    aria-label="Cin Etudiant"
+                    id="cinEtudiant"
+                    name="cinEtudiant"
+                    [(ngModel)]="reservation.cinEtudiant"
+                    required
                   />
                 </div>
               </div>
               <div class="row">
                 <div class="col-6"></div>
                 <button
-                  type="button"
-                  class="col-2 btn bg-gradient-success w-20 mx-2 my-2 mb-2"
+                  type="submit"
+                  class="col-2 btn bg-gradient-success w-20 mx-2"
                 >
                   Ajouter
                 </button>
-                <button
-                  type="button"
-                  class="col-2 btn bg-gradient-danger w-20 my-2 mb-2"
-                >
+                <a type="button" class="col-2 btn bg-gradient-danger w-20">
                   Annuler
-                </button>
+                </a>
               </div>
             </form>
           </div>

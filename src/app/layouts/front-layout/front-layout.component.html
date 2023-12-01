@@ -43,11 +43,27 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link me-2" routerLink="user/reservation">
+        <!-- Liens "Réservations" avec sous-menus -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle me-2"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
             <i class="fas fa-key opacity-6 me-1"></i>
-            Reservation
+            Réservations
           </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="user/ajouterReservation"
+              >Ajouter Réservation</a
+            >
+            <a class="dropdown-item" routerLink="/user/reservations"
+              >Mes Réservations</a
+            >
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link me-2" routerLink="user/register">
