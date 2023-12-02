@@ -10,7 +10,7 @@
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="row justify-content-center mt-3">
-              <div class="col-md-11">
+              <div class="col-md-8">
                 <!-- Form Basic -->
                 <div class="card mb-4">
                   <div
@@ -23,24 +23,30 @@
                   <table class="table">
                     <tbody>
                       <tr>
-                        <th>Id Réservation</th>
-                        <td>x</td>
+                        <th>Identifinant Réservation</th>
+                        <td class="text-bold">
+                          {{ reservation.idReservation }}
+                        </td>
                       </tr>
                       <tr>
                         <th>Type Chambre demander</th>
-                        <td>x</td>
+                        <td class="text-bold">{{ reservation.typeChambre }}</td>
                       </tr>
                       <tr>
                         <th>Annee Réservation</th>
-                        <td>x</td>
+                        <td class="text-bold">
+                          {{ reservation.anneeUniversitaire }}
+                        </td>
                       </tr>
                       <tr>
                         <th>Statue</th>
-                        <td>x</td>
+                        <td class="text-bold">{{ reservation.estValide }}</td>
                       </tr>
                       <tr>
-                        <th>Longeur</th>
-                        <td>x</td>
+                        <th>Numero Reservation</th>
+                        <td class="text-bold">
+                          {{ reservation.numReservation }}
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -55,16 +61,56 @@
                   <table class="table">
                     <tbody>
                       <tr>
-                        <th>Longeur</th>
-                        <td>x</td>
+                        <th>Identifinant Etudiant</th>
+                        <td class="text-bold">{{ etudiant.idEtudiant }}</td>
                       </tr>
                       <tr>
-                        <th>Largeur</th>
-                        <td>x</td>
+                        <th>Cin Etudiant</th>
+                        <td class="text-bold">{{ etudiant.cin }}</td>
                       </tr>
                       <tr>
-                        <th>Hauteur</th>
-                        <td>x</td>
+                        <th>Prenom Etudiant</th>
+                        <td class="text-bold">{{ etudiant.prenomEt }}</td>
+                      </tr>
+                      <tr>
+                        <th>Nom Etudiant</th>
+                        <td class="text-bold">{{ etudiant.nomEt }}</td>
+                      </tr>
+                      <tr>
+                        <th>Date Naissance Etudiant</th>
+                        <td class="text-bold">{{ etudiant.dateNaissance }}</td>
+                      </tr>
+                      <tr>
+                        <th>Ecole Etudiant</th>
+                        <td class="text-bold">{{ etudiant.ecole }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Form Basic -->
+                <div class="card mb-4">
+                  <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                  >
+                    <h4 class="m-0 font-weight-bold text-primary">
+                      Universite
+                    </h4>
+                  </div>
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>Id Universite</th>
+                        <td class="text-bold">{{ universite.idUniversite }}</td>
+                      </tr>
+                      <tr>
+                        <th>Nom Universite</th>
+                        <td class="text-bold">
+                          {{ universite.nomUniversite }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Adresse Universite</th>
+                        <td class="text-bold">{{ universite.adresse }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -80,23 +126,15 @@
                     <tbody>
                       <tr>
                         <th>Id Foyer</th>
-                        <td>x</td>
+                        <td class="text-bold">{{ foyer.idFoyer }}</td>
                       </tr>
                       <tr>
-                        <th>Type Chambre demander</th>
-                        <td>x</td>
+                        <th>Nom Foyer</th>
+                        <td class="text-bold">{{ foyer.nomFoyer }}</td>
                       </tr>
                       <tr>
-                        <th>Annee Réservation</th>
-                        <td>x</td>
-                      </tr>
-                      <tr>
-                        <th>Statue</th>
-                        <td>x</td>
-                      </tr>
-                      <tr>
-                        <th>Longeur</th>
-                        <td>x</td>
+                        <th>Capacite Foyer</th>
+                        <td class="text-bold">{{ foyer.capaciteFoyer }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -111,24 +149,16 @@
                   <table class="table">
                     <tbody>
                       <tr>
-                        <th>Id Foyer</th>
-                        <td>x</td>
+                        <th>Id Bloc</th>
+                        <td class="text-bold">x</td>
                       </tr>
                       <tr>
-                        <th>Type Chambre demander</th>
-                        <td>x</td>
+                        <th>Nom Bloc</th>
+                        <td class="text-bold">{{ bloc.nomBloc }}</td>
                       </tr>
                       <tr>
-                        <th>Annee Réservation</th>
-                        <td>x</td>
-                      </tr>
-                      <tr>
-                        <th>Statue</th>
-                        <td>x</td>
-                      </tr>
-                      <tr>
-                        <th>Longeur</th>
-                        <td>x</td>
+                        <th>Capacite Bloc</th>
+                        <td class="text-bold">{{ bloc.capaciteBloc }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -144,23 +174,19 @@
                     <tbody>
                       <tr>
                         <th>Id Chambre</th>
-                        <td>x</td>
+                        <td class="text-bold">{{ chambre.idChambre }}</td>
                       </tr>
                       <tr>
-                        <th>Type Chambre demander</th>
-                        <td>x</td>
+                        <th>Type Chambre</th>
+                        <td class="text-bold">{{ chambre.typeChambre }}</td>
                       </tr>
                       <tr>
-                        <th>Annee Réservation</th>
-                        <td>x</td>
+                        <th>Numero Chambre</th>
+                        <td class="text-bold">{{ chambre.numeroChambre }}</td>
                       </tr>
                       <tr>
-                        <th>Statue</th>
-                        <td>x</td>
-                      </tr>
-                      <tr>
-                        <th>Longeur</th>
-                        <td>x</td>
+                        <th>Bloc Id</th>
+                        <td class="text-bold">{{ chambre.blocIdBloc }}</td>
                       </tr>
                     </tbody>
                   </table>

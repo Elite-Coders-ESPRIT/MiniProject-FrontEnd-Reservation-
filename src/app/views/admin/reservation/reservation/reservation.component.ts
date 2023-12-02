@@ -4,6 +4,7 @@ import { ReservationService } from 'src/app/service/reservation/reservation.serv
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { TwilioServiceService } from 'src/app/service/twilio-service.service';
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -14,9 +15,17 @@ export class ReservationComponent {
   reservations: Reservation[] = [];
   @ViewChild('pdfContent') pdfContent!: ElementRef;
 
-  constructor( private serviceReservation:ReservationService) { }
+  constructor( private twilioService: TwilioServiceService, private serviceReservation:ReservationService) { }
   message: string;
-  
+ msgSMS : string ="**** Campus Living Spaces **** - Resulat de votre demande de reservation : -----";
+  //déclaration pagination 
+  p:number = 1 ; 
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20];
+  //// 
   ngOnInit(): void {
     console.log("Get List of Reservation ");    
     this.getAllReservations();
@@ -48,16 +57,32 @@ export class ReservationComponent {
         window.location.reload();
         });
   }}
-
   
   estValide(id):void{
       this.serviceReservation.estValide(id).subscribe((data: Map<string, Object>) => {
         console.log('Réponse de l\'API :', data);
         this.message= data['message'];
-     
+        if (data['estValide']==true){
+         this.msgSMS=this.msgSMS+ " Vous êtes affecté à la chambre   " +data['chambre'] + "Vous pouvez consulter votre espace pour plus d'informations.";
+        this.envoyerSMS(this.msgSMS);
+        }else if(!data['admin']){
+          this.envoyerSMS(this.msgSMS + data['message']+ "----- Vous pouvez demander un autre type dans votre espace.");
+         }           
       });
   }
 
+  envoyerSMS(msgSMS) {
+    const numeroDestinataire = '+21621866975'; // Remplacez par le numéro réel
+   
+    this.twilioService.sendSMS(numeroDestinataire, msgSMS).subscribe(
+      (response) => {
+        console.log('SMS envoyé avec succès', response);
+      },
+      (error) => {
+        console.error('Erreur lors de l\'envoi du SMS', error);
+      }
+    );
+  }
   exportToExcel(): void {
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.reservations);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -89,6 +114,23 @@ export class ReservationComponent {
 
     });
   }
+  //Pagination 
+  postList(): void {
+    this.serviceReservation.getAllReservations().subscribe((response) => {
+      this.POSTS = response;
+      console.log(this.POSTS);
+    });
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.postList();
+  }
   
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.postList();
+
+  }
   
 }

@@ -1,5 +1,4 @@
-import { Chambre } from "./Chambre";
-import { Etudiant } from "./Etudiant";
+
 import { TypeChambre } from "./TypeC";
 
 export class Reservation{

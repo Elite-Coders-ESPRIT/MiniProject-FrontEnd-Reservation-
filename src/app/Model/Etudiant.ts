@@ -1,8 +1,7 @@
 export class Etudiant{
-    id_etudiant:number;
-    cin:string;
-    date_naissance:Date;
-    estValide:boolean;
+    idEtudiant:number;
+    cin:bigint;
+    dateNaissance:Date; 
     ecole:String;
     nomEt:String;
     prenomEt:String

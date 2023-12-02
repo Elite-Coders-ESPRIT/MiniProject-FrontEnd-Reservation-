@@ -24,6 +24,7 @@ export class AjouterReservationComponent {
   }
 
   ajouterReservation(): void {
+   
     this.serviceReservation.ajouterReservation(this.reservation).subscribe(
       (response) => {
         console.log('Réponse de l\'API :', response.message);

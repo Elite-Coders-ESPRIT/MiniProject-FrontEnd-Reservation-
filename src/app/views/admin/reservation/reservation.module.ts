@@ -5,6 +5,7 @@ import { ReservationRoutingModule } from './reservation-routing.module';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FiltrageComponent } from './filtrage/filtrage.component';
 import { ShowReservationComponent } from './show-reservation/show-reservation.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ShowReservationComponent } from './show-reservation/show-reservation.co
   ],
   imports: [
     CommonModule,
-    ReservationRoutingModule
+    ReservationRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class ReservationModule { }

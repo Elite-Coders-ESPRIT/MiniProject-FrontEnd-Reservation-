@@ -18,7 +18,7 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     LayoutsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [NgbPopover],
   bootstrap: [AppComponent]
